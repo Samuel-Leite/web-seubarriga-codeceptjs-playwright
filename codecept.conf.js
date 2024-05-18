@@ -18,5 +18,21 @@ exports.config = {
     I: './helpers/Commands.js',
     loginPage: "./tests/pages/LoginPage.js",
   },
+  plugins: {
+    stepByStepReport: {
+      enabled: true,
+      ignoreSteps: ['grab*'],
+      output: "./output",
+      deleteSuccessful: false,
+      disableScreenshotOnFail: false
+    },
+    // Habilitar o ultimo print em caso de falha
+    screenshotOnFail: {
+      enabled: true
+    },
+    tryTo: {
+      enabled: true
+    },
+  },
   name: 'seu-barriga-codeceptjs-playwright'
 }

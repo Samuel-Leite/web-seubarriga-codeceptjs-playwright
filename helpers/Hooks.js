@@ -1,23 +1,24 @@
 const Helper = require('@codeceptjs/helper')
 const { container, output, helper } = require('codeceptjs')
-const execSync = require('child_process').execSync
-require('dotenv').config({ path: '.env' })
+const fs = require('fs').promises
+const path = require('path')
 
 class hooks extends Helper {
-  _init() {
+  async _init() {
     // before all tests
     console.log('*************************************')
     console.log('******* Variáveis de Ambiente *******')
     console.log('BROWSER: ' + process.env.BROWSER)
     try {
-      execSync('rd /s /q output', { encoding: 'utf8' })
+      await fs.rm(path.resolve(__dirname, '../output'), { recursive: true })
       console.log('DIRETORIO: excluído com sucesso!')
     } catch (error) {
-      console.error(`Ocorreu um erro ao excluir o diretório: ${error}`)
+      console.error('DIRETORIO: Ocorreu um erro:', error)
     }
 
     console.log('*************************************')
   }
+
   _before(test) {
     // before a test
     codeceptjs.container
@@ -26,8 +27,8 @@ class hooks extends Helper {
     codeceptjs.container.helpers().Playwright.browserContext.grantPermissions(['geolocation'])
     test.retries(process.env.RETRY)
     console.log('--------------------------------Start----------------------------------')
-    let allure = codeceptjs.container.plugins('allure')
-    allure.addParameter('0', 'ENV', process.env.BROWSER)
+    // let allure = codeceptjs.container.plugins('allure')
+    // allure.addParameter('0', 'ENV', process.env.BROWSER)
   }
   _after() {
     console.log('--------------------------------End----------------------------------')

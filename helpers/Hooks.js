@@ -1,6 +1,7 @@
 const Helper = require('@codeceptjs/helper')
 const { container, output, helper } = require('codeceptjs')
 const execSync = require('child_process').execSync
+require('dotenv').config({ path: '.env' })
 
 class hooks extends Helper {
   _init() {
@@ -26,7 +27,6 @@ class hooks extends Helper {
     test.retries(process.env.RETRY)
     console.log('--------------------------------Start----------------------------------')
     let allure = codeceptjs.container.plugins('allure')
-    allure.addParameter('0', 'ENV', process.env.ENV)
     allure.addParameter('0', 'ENV', process.env.BROWSER)
   }
   _after() {

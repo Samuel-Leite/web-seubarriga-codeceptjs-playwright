@@ -11,7 +11,7 @@ const credencial = yaml.load(fs.readFileSync(credencialPath, 'utf8'))
 Scenario('Login com credenciais validas', ({ loginPage }) => {
   loginPage.doLogin(credencial.valida.email, credencial.valida.senha)
   loginPage.checkLoginStatus('Bem vindo, Seu Madruga!')
-})
+}).tag('wip')
 
 Scenario('Login com credenciais invalidas', ({ loginPage }) => {
   loginPage.doLogin(credencial.invalida.email, credencial.invalida.senha)

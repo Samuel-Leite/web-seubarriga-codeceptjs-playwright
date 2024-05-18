@@ -8,7 +8,9 @@
     "precommit": "git add . ",
     "commit": "git cz && node .husky/push.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "tag": "npx codeceptjs run ./tests/e2e/*_test.js --verbose --grep",
+    "wip": "npx codeceptjs run ./tests/e2e/*_test.js --verbose"
   },
   "lint-staged": {
     "*": [

@@ -21,4 +21,6 @@ npm install -g git-cz
 npm install commitizen -g --force 
 npm install --save-dev git-cz
 
-OBS.: Copiar as pastas: .husky, changelog.config.js e adicionar comandos na pasta package.json: "scripts": { "prepare": "husky install", "precommit": "git add . ", "commit": "git cz && node .husky/push.js", },
+
+comando para executar
+npm run tag '@wip'

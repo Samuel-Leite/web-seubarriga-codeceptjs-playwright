@@ -1,8 +1,9 @@
-const { readdirSync } = require('fs')
+/* eslint-disable linebreak-style */
+const { readdirSync } = require('fs');
 
 const allScopes = readdirSync('./', { withFileTypes: true })
   .filter((dirent) => dirent.isDirectory())
-  .map((dirent) => dirent.name)
+  .map((dirent) => dirent.name);
 
 module.exports = {
   disableEmoji: false,
@@ -15,37 +16,37 @@ module.exports = {
     chore: {
       description: 'Build process or auxiliary tool changes',
       emoji: '📦',
-      value: 'chore'
+      value: 'chore',
     },
     feat: {
       description: 'A new feature',
       emoji: '✨',
-      value: 'feat'
+      value: 'feat',
     },
     fix: {
       description: 'A bug fix',
       emoji: '🐛',
-      value: 'fix'
+      value: 'fix',
     },
     test: {
       description: 'Adding missing tests',
       emoji: '🧪',
-      value: 'test'
+      value: 'test',
     },
     refactor: {
       description: 'A code change that neither fixes a bug or adds a feature',
       emoji: '💡',
-      value: 'refactor'
+      value: 'refactor',
     },
     docs: {
       description: 'Documentation only changes',
       emoji: '📚',
-      value: 'docs'
+      value: 'docs',
     },
     merge: {
       description: 'Merge branchs',
       emoji: '🧬',
-      value: 'merge'
-    }
-  }
-}
+      value: 'merge',
+    },
+  },
+};

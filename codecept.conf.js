@@ -1,5 +1,6 @@
+/* eslint-disable linebreak-style */
 /** @type {CodeceptJS.MainConfig} */
-require('dotenv').config({ path: '.env' })
+require('dotenv').config({ path: '.env' });
 
 exports.config = {
   tests: './tests/e2e/Login_test.js',
@@ -8,15 +9,31 @@ exports.config = {
     Playwright: {
       browser: process.env.BROWSER,
       url: 'https://seubarriga.wcaquino.me/login',
-      show: true
+      show: true,
     },
     Hooks: {
-      require: './helpers/Hooks.js'
-    }
+      require: './helpers/Hooks.js',
+    },
   },
   include: {
     I: './helpers/Commands.js',
-    loginPage: "./tests/pages/LoginPage.js",
+    loginPage: './tests/pages/LoginPage.js',
   },
-  name: 'seu-barriga-codeceptjs-playwright'
-}
+  plugins: {
+    stepByStepReport: {
+      enabled: true,
+      ignoreSteps: ['grab*'],
+      output: './output',
+      deleteSuccessful: false,
+      disableScreenshotOnFail: false,
+    },
+    // Habilitar o ultimo print em caso de falha
+    screenshotOnFail: {
+      enabled: true,
+    },
+    tryTo: {
+      enabled: true,
+    },
+  },
+  name: 'seu-barriga-codeceptjs-playwright',
+};

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 Feature('Acesso a plataforma Seu Barriga');
 

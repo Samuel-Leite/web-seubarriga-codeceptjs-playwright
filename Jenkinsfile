@@ -4,9 +4,16 @@ pipeline {
  
   stages {
     stage('Install dependencies') {
-      steps {
-        sh 'npm install'
-      }
+        steps {
+            sh '''
+                ls -la
+                node --version
+                npm --version
+                npm install
+                npx playwright update
+                ls -la
+            '''
+        }
     }
     stage('Run Test') {
       steps {

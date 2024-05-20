@@ -60,4 +60,5 @@ Observação: é necessário que esteja configurado o ANDROID_HOME nas variávei
 
 
 ## 🔗 Links para Apoio:
-
+- [Tutorial do CodeceptJs + Playwright](https://codecept.io/playwright/#setup)
+- [Helpers do CodeceptJs + Playwright](https://codecept.io/helpers/Playwright/)

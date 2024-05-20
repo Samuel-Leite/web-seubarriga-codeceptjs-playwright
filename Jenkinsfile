@@ -21,10 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '''
-                    echo "Test stage"
-                    npm run tag '@wip'
-                '''
+                sh "npm run tag '@wip'"
             }
         }
     }

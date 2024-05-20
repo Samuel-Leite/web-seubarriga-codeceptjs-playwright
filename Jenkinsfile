@@ -28,6 +28,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    npx playwright install
                     npm run tag '@wip'
                 '''
             }

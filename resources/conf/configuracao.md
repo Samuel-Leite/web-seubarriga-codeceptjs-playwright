@@ -72,3 +72,5 @@ docker compose down
 ```
 docker compose down --volumes --rmi all 
 ```
+
+- **Step 8 - Instalar plugin do Docker no Jenkins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline'

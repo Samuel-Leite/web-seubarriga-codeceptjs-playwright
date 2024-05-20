@@ -15,6 +15,7 @@ pipeline {
                     node --version
                     npm --version
                     npm install
+                    npx playwright install
                     ls -la
                 '''
             }

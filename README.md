@@ -50,10 +50,9 @@ Observação: é necessário que esteja configurado o ANDROID_HOME nas variávei
 | --------------- | -------------------------------------------------------------------------------------- |
 | ./husky         | Configuração da automação dos commits                                                  |
 | ./helpers       | Configuração com Custom Commands, Hooks e Utils com funções utilizadas na automação    |
-| ./resource/app  | Arquivo APK da aplicação que está integrado ao Android Studio                          |
-| ./resource/conf | Capabilitys dos dispositivos do Android Studio e BrowserStack                          |
-| ./resource/data | Credenciais para logar no aplicativo móvel SauceLabs                                   |
-| ./tests         | Testes e2e, features, screens e Step Definitions concernentes aos testes automatizados |
+| ./resource/conf |                                                                                        |
+| ./resource/data | Credenciais para logar no aplicativo                                                   |
+| ./tests         | Testes e2e, e pages concernentes aos testes automatizados                              |
 
 
 ## 📷 Evidência dos testes:
@@ -62,7 +61,3 @@ Observação: é necessário que esteja configurado o ANDROID_HOME nas variávei
 
 ## 🔗 Links para Apoio:
 
-- [CodeceptJs Appium](https://codecept.io/helpers/Appium.html)
-- [Capabilitys do BrowserStack](https://www.browserstack.com/app-automate/capabilities?tag=w3c)
-- [Ações de toque do Appium no CodeceptJS](https://sandeepqaops.medium.com/appium-touch-actions-in-codeceptjs-double-tap-press-long-press-drag-and-drop-etc-390b0edca65d)
-- [Download do Appium Desktop](https://github.com/appium/appium-desktop/releases)

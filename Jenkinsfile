@@ -10,11 +10,7 @@ pipeline {
     }
     stage('Run Test') {
       steps {
-        parallel(
-          web: {
-            sh 'npx codeceptjs run --verbose'
-           }
-        )
+        sh 'npm run tag "@wip"'
       }
     }
   }

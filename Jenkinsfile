@@ -23,6 +23,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Test stage"
+                    npm run tag '@wip'
                 '''
             }
         }

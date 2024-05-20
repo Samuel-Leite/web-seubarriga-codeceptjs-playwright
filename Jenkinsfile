@@ -12,18 +12,22 @@ pipeline {
         }
         steps {
             sh '''
-                ls -la
                 node --version
                 npm --version
                 npm install
-                ls -la
             '''
         }
     }
     stage('Run Test') {
-      steps {
-        sh 'npm run tag "@wip"'
-      }
+        agent {
+            docker{
+                image 'node:20.9.0-alpine3.18'
+                reuseNode true
+            }
+        }  
+        steps {
+            sh 'npm run tag "@wip"'
+        }
     }
   }
 }

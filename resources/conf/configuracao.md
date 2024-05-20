@@ -74,3 +74,45 @@ docker compose down --volumes --rmi all
 ```
 
 - **Step 8 - Instalar plugin do Docker no Jenkins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline'
+
+
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            agent {
+                docker{
+                    image 'node:20.9.0-alpine3.18'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    ls -la
+                    node --version
+                    npm --version
+                    npm install
+                    npx playwright update
+                    ls -la
+                '''
+            }
+        }
+        stage('Test') {
+                        agent {
+                docker{
+                    image 'node:20.9.0-alpine3.18'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    npm run tag '@wip'
+                '''
+            }
+        }
+    }
+}
+```

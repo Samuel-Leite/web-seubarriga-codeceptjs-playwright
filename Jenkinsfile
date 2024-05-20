@@ -4,6 +4,12 @@ pipeline {
  
   stages {
     stage('Install dependencies') {
+        agent {
+            docker{
+                image 'node:20.9.0-alpine3.18'
+                reuseNode true
+            }
+        }
         steps {
             sh '''
                 ls -la

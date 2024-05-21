@@ -22,6 +22,7 @@ exports.config = {
   mocha: {
     reporterOptions: {
       mochaFile: 'output/junit.xml',
+      reportDir: 'output',
     },
   },
   plugins: {

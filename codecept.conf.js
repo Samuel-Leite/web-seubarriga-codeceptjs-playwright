@@ -22,16 +22,11 @@ exports.config = {
   mocha: {
     reporterOptions: {
       mochaFile: 'output/junit.xml',
-      reportDir: 'output',
     },
   },
   plugins: {
     stepByStepReport: {
       enabled: true,
-      ignoreSteps: ['grab*'],
-      output: './output',
-      deleteSuccessful: false,
-      disableScreenshotOnFail: false,
     },
     // Habilitar o ultimo print em caso de falha
     screenshotOnFail: {

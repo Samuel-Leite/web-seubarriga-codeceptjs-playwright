@@ -18,10 +18,24 @@ pipeline {
             }
         }
 
-stage('Test') {
+        // stage('Test') {
+        //     agent {
+        //         docker {
+        //             image 'node:18-alpine'
+        //             reuseNode true
+        //         }
+        //     }
+        //     steps {
+        //         sh '''
+        //             npx codeceptjs run ./tests/e2e/*_test.js mocha --reporter mocha-junit-reporter
+        //         '''
+        //     }
+        // }
+
+        stage('E2E') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'codeceptjs/codeceptjs'
                     reuseNode true
                 }
             }

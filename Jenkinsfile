@@ -25,11 +25,11 @@ pipeline {
                     reuseNode true
                 }
             }
-
             steps {
                 sh '''
-                    npx codeceptjs run ./tests/e2e/*_test.js --verbose
-                    ls -la output
+                    mkdir -p output
+                    npx codeceptjs run --verbose
+                    sh 'ls -la output'
                 '''
             }
         }
@@ -37,10 +37,9 @@ pipeline {
 
     post {
         always {
-            // Verifica se o arquivo junit.xml existe antes de tentar processá-lo
             script {
-                def testResults = findFiles(glob: 'output/junit.xml')
-                if (testResults.length == 0) {
+                def result = sh(script: 'if [ -f output/junit.xml ]; then echo "File exists"; else echo "File does not exist"; fi', returnStdout: true).trim()
+                if (result == "File does not exist") {
                     error "No test report files were found. Configuration error?"
                 }
             }

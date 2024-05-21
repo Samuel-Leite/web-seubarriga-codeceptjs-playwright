@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sh '''
                     mkdir -p output
-                    npx codeceptjs run --verbose
+                    npx codeceptjs run ./tests/e2e/*_test.js mocha --reporter mocha-junit-reporter
                 '''
                 // Verificar a criação do diretório de saída e do arquivo de relatório
                 sh 'ls -la output'

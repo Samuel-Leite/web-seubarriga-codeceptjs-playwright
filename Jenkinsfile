@@ -28,7 +28,8 @@ pipeline {
 
             steps {
                 sh '''
-                    npm run tag '@wip'
+                    npx codeceptjs run ./tests/e2e/*_test.js --verbose
+                    ls -la output
                 '''
             }
         }
@@ -36,6 +37,13 @@ pipeline {
 
     post {
         always {
+            // Verifica se o arquivo junit.xml existe antes de tentar processá-lo
+            script {
+                def testResults = findFiles(glob: 'output/junit.xml')
+                if (testResults.length == 0) {
+                    error "No test report files were found. Configuration error?"
+                }
+            }
             junit 'output/junit.xml'
         }
     }

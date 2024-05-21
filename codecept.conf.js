@@ -25,6 +25,13 @@ exports.config = {
     },
   },
   plugins: {
+    stepByStepReport: {
+      enabled: false,
+      ignoreSteps: ['grab*'],
+      output: './output',
+      deleteSuccessful: false,
+      disableScreenshotOnFail: false,
+    },
     // Habilitar o ultimo print em caso de falha
     screenshotOnFail: {
       enabled: true,

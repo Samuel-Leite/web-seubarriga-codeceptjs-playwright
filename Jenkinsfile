@@ -29,8 +29,10 @@ pipeline {
                 sh '''
                     mkdir -p output
                     npx codeceptjs run --verbose
-                    sh 'ls -la output'
                 '''
+                // Verificar a criação do diretório de saída e do arquivo de relatório
+                sh 'ls -la output'
+                sh 'cat output/junit.xml || echo "No junit.xml file found"'
             }
         }
     }

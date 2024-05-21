@@ -75,6 +75,33 @@ docker compose down --volumes --rmi all
 
 - **Step 8 - Instalar plugin do Docker no Jenkins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline'
 
+- **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
+  - Executar o comando:
+```
+npm i mocha-junit-reporter
+```
+
+  - Inserir a configuração no arquivo `codecept.conf.js`:
+```
+exports.config = {
+  mocha: {
+    reporterOptions: {
+      mochaFile: 'output/result.xml',
+      reportDir: 'output',
+    },
+  },
+}  
+```
+
+  - Inserir a configuração no arquivo `Jenkinsfile`:
+```
+post {
+  always {
+    junit 'test-result/junit.xml'
+  }
+}  
+```
+
 
 
 ```

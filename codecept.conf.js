@@ -19,6 +19,12 @@ exports.config = {
     I: './helpers/Commands.js',
     loginPage: './tests/pages/LoginPage.js',
   },
+  mocha: {
+    reporterOptions: {
+      mochaFile: 'output/result.xml',
+      reportDir: 'output',
+    },
+  },
   plugins: {
     stepByStepReport: {
       enabled: true,

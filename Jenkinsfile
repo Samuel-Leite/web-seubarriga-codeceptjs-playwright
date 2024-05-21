@@ -13,7 +13,7 @@ pipeline {
                 sh '''
                     node --version
                     npm --version
-                    npm ci
+                    npm install
                 '''
             }
         }
@@ -31,6 +31,12 @@ pipeline {
                     npm run tag '@wip'
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+            junit 'output/junit.xml'
         }
     }
 }

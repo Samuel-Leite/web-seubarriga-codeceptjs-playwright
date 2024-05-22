@@ -102,6 +102,7 @@ post {
 }  
 ```
 
+- **Step 10 - Imagem do Codeceptjs no Docker:** Acessar o link [CodeceptJS + Docker](https://codecept.io/docker.html#codeceptjs-docker)
 
 
 ```

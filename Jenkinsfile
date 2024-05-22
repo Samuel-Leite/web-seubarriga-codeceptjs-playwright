@@ -41,6 +41,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    docker pull mcr.microsoft.com/playwright:v1.44.0-focal
                     npx codeceptjs run ./tests/e2e/*_test.js mocha --reporter mocha-junit-reporter
                 '''
             }

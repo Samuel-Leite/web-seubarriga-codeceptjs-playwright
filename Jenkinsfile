@@ -35,7 +35,7 @@ pipeline {
         stage('E2E') {
             agent {
                 docker {
-                    image 'codeceptjs'
+                    image 'codeceptjs/codeceptjs'
                     reuseNode true
                 }
             }

@@ -73,7 +73,7 @@ docker compose down
 docker compose down --volumes --rmi all 
 ```
 
-- **Step 8 - Instalar plugin do Docker no Jenkins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline'
+- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Stage View Pipeline, HTML Publisher'
 
 - **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
   - Executar o comando:
@@ -114,3 +114,20 @@ exports.config = {
   },
 }  
 ```
+
+- **Step 11 - Configuração do HTML Report:** Executar as seguintes etapas:
+  - Executar o comando abaixo no path: Dashboard > Manage Jenkins > section “Tools and actions” > Script Console:
+```
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts;")
+```
+- .
+  - Acessar a configuração da pipeline no path: Configuração > Pipeline > Pipeline Syntax > selecionar os campos:
+
+```
+  **Sample Step:** publishHTML: Publish HTML reports
+  **publishHTML:** output
+  **Index page[s]:** mochawesome.html
+  **Report title** {nome_relatorio_dashboard}
+```
+- .
+  - Clique no botão 'Generate Pipeline Script > copia o código informado > cola no Jenkinsfile

@@ -35,7 +35,7 @@ pipeline {
         stage('E2E') {
             agent {
                 docker {
-                    image 'codeceptjs/codeceptjs'
+                    image 'mcr.microsoft.com/playwright:v1.44.0-focal'
                     reuseNode true
                 }
             }

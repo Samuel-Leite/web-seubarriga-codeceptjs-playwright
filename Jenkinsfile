@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -18,24 +18,10 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     agent {
-        //         docker {
-        //             image 'node:18-alpine'
-        //             reuseNode true
-        //         }
-        //     }
-        //     steps {
-        //         sh '''
-        //             npx codeceptjs run ./tests/e2e/*_test.js mocha --reporter mocha-junit-reporter
-        //         '''
-        //     }
-        // }
-
-        stage('E2E') {
+        stage('Run Test') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.44.0-focal'
+                    image 'codeceptjs/codeceptjs:sha-0e1b86a'
                     reuseNode true
                 }
             }

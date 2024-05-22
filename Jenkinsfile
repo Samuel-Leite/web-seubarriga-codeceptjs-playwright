@@ -35,7 +35,7 @@ pipeline {
 
     post {
         always {
-            junit 'output/junit.xml'
+            junit 'output/mochawesome.html'
         }
     }
 }

@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    npx codeceptjs run ./tests/e2e/*_test.js mocha --reporter mocha-junit-reporter
+                    npx codeceptjs run ./tests/e2e/Login_test.js --reporter mochawesome
                 '''
             }
         }

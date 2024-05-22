@@ -116,6 +116,11 @@ exports.config = {
 ```
 
 - **Step 11 - Configuração do HTML Report:** Executar as seguintes etapas:
+  - Instalar o relatório HTML
+```
+npm i mochawesome
+```
+- .
   - Executar o comando abaixo no path: Dashboard > Manage Jenkins > section “Tools and actions” > Script Console:
 ```
 System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts;")

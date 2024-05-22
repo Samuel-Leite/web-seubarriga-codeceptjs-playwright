@@ -35,7 +35,7 @@ pipeline {
 
     post {
         always {
-            // junit 'output/junit.xml'
+            junit 'output/junit.xml'
             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'output', reportFiles: 'mochawesome.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }

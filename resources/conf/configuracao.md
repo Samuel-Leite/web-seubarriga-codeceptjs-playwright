@@ -102,45 +102,15 @@ post {
 }  
 ```
 
-- **Step 10 - Imagem do Codeceptjs no Docker:** Acessar o link [CodeceptJS + Docker](https://codecept.io/docker.html#codeceptjs-docker)
-
-
+- **Step 10 - Imagem do Codeceptjs no Docker:** Acessar o link [CodeceptJS + Docker](https://codecept.io/docker.html#codeceptjs-docker) e utilizar a imagem mais recente disponível, e colocar opção `false` no campo `show`
 ```
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            agent {
-                docker{
-                    image 'node:20.9.0-alpine3.18'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh '''
-                    ls -la
-                    node --version
-                    npm --version
-                    npm install
-                    npx playwright update
-                    ls -la
-                '''
-            }
-        }
-        stage('Test') {
-                        agent {
-                docker{
-                    image 'node:20.9.0-alpine3.18'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh '''
-                    npm run tag '@wip'
-                '''
-            }
-        }
-    }
-}
+exports.config = {
+  tests: './tests/e2e/Login_test.js',
+  output: './output',
+  helpers: {
+    Playwright: {
+      show: false,
+    },
+  },
+}  
 ```

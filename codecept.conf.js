@@ -9,7 +9,7 @@ exports.config = {
     Playwright: {
       browser: process.env.BROWSER,
       url: 'https://seubarriga.wcaquino.me/login',
-      show: true,
+      show: false,
     },
     Hooks: {
       require: './helpers/Hooks.js',

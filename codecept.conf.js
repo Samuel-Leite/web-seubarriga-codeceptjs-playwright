@@ -27,7 +27,7 @@ exports.config = {
   },
   plugins: {
     stepByStepReport: {
-      enabled: false,
+      enabled: true,
       ignoreSteps: ['grab*'],
       output: './output',
       deleteSuccessful: false,

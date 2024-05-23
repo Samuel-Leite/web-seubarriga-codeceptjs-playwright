@@ -15,6 +15,8 @@ Através do framework CodeceptJS + Playwright, o projeto utilizou a plataforma S
 - JavaScript
 - Jenkins
 - Docker
+- Docker Compose
+- CI/CD
 
 ## 🤖 Instalação e configuração:
 
@@ -62,3 +64,7 @@ Observação: é necessário que esteja configurado o ANDROID_HOME nas variávei
 ## 🔗 Links para Apoio:
 - [Tutorial do CodeceptJs + Playwright](https://codecept.io/playwright/#setup)
 - [Helpers do CodeceptJs + Playwright](https://codecept.io/helpers/Playwright/)
+- [CodeceptJs - Continuous Integration](https://codecept.io/continuous-integration/#recipes)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Hub Docker](https://hub.docker.com/)
+- [Jenkins - Configuring Content Security Policy](https://www.jenkins.io/doc/book/security/configuring-content-security-policy/)

@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
@@ -14,20 +17,32 @@ class hooks extends Helper {
     console.log('*************************************');
     console.log('******* Variáveis de Ambiente *******');
     console.log(`BROWSER: ${process.env.BROWSER}`);
-    // Exclua o diretório output localmente
-    try {
-      await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
-      console.log('DIRETORIO LOCAL: excluído com sucesso!');
-    } catch (error) {
-      console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
+    // Verifique se estamos dentro de um contêiner Docker
+    const isDocker = process.env.DOCKER === 'true';
+
+    // Exclua o diretório output localmente, a menos que estejamos dentro de um contêiner Docker
+    if (!isDocker) {
+      try {
+        await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
+        console.log('DIRETORIO LOCAL: excluído com sucesso!');
+      } catch (error) {
+        console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
+      }
     }
-    // Exclua o diretório output dentro do contêiner
-    try {
-      const containerOutputDir = '/usr/src/app/output'; // Diretório output dentro do contêiner
-      await fs.rm(containerOutputDir, { recursive: true });
-      console.log('DIRETORIO CONTAINER: excluído com sucesso!');
-    } catch (error) {
-      console.error('DIRETORIO CONTAINER: Ocorreu um erro:', error);
+
+    // Exclua o diretório output dentro do contêiner, se estivermos dentro de um contêiner Docker
+    if (isDocker) {
+      try {
+        const containerOutputDir = '/usr/src/app/output'; // Diretório output dentro do contêiner
+        const files = await fs.readdir(containerOutputDir);
+        for (const file of files) {
+          const filePath = path.join(containerOutputDir, file);
+          await fs.rm(filePath, { recursive: true, force: true });
+        }
+        console.log('DIRETORIO DOCKER: limpo com sucesso!');
+      } catch (error) {
+        console.error('DIRETORIO DOCKER: Ocorreu um erro:', error);
+      }
     }
 
     console.log('*************************************');

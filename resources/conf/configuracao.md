@@ -50,7 +50,7 @@ Após executar os comandos acima, deve copiar as pastas: .husky, changelog.confi
 ```
 
 ### Instalação do Jenkins através do Docker Compose:
-Para configurar o Docker, é necessários os seguintes passos:
+Para configurar o Docker Compose, é necessários os seguintes passos:
 - **Step 1 - Clonar ou baixar o projeto do repositório:** https://github.com/vdespa/install-jenkins-docker
 - **Step 2 - Baixar e instalar o Docker Desktop localmente:** https://www.docker.com/products/docker-desktop/
 - **Step 3 - Construir a imagem do Jenkins Docker:** Acesse o terminal no diretório do projeto clonado onde o arquivo `Dockerfile` está localizado. E crie a imagem do Jenkins Docker:
@@ -73,7 +73,7 @@ docker compose down
 docker compose down --volumes --rmi all 
 ```
 
-- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Stage View Pipeline, HTML Publisher, Blue Ocean'
+- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Docker, Pipeline: Stage View, HTML Publisher, Blue Ocean'
 
 - **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
   - Executar o comando:
@@ -138,3 +138,61 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
   - Clique no botão 'Generate Pipeline Script > copia o código informado > cola no Jenkinsfile
 
 - **Step 11 - Configuração da interface Blue Ocean do Jenkins:** Após instalar o plugin do Blue Ocean, irá apresentar o no dashboard o botão 'blue ocean' que irá direcionar para uma nova interface do Dashboard
+
+
+### Instalação do Jenkins através do Docker:
+Para configurar o Docker, é necessários os seguintes passos:
+- **Step 1 - Configuração da imagem do Docker:** Para a configuração da imagem no Docker foi utilizado as seguintes configurações:
+```
+# Use a imagem base oficial do Node.js
+FROM node:16-buster-slim
+
+# Instalações de dependências do sistema
+RUN apt-get update && apt-get install -y \
+    libgtk2.0-0 \
+    libgtk-3-0 \
+    libgbm-dev \
+    libnotify-dev \
+    libgconf-2-4 \
+    libnss3 \
+    libxss1 \
+    libasound2 \
+    libxtst6 \
+    xauth \
+    xvfb \
+    --no-install-recommends \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Diretório de trabalho
+WORKDIR /usr/src/app
+
+# Copia package.json e package-lock.json para o diretório de trabalho
+COPY package*.json ./
+
+# Instala as dependências do Node.js
+RUN npm install
+
+# Copia o restante dos arquivos da aplicação
+COPY . .
+
+# Instala Playwright e seus navegadores
+RUN npx playwright install
+
+# Comando padrão para rodar os testes
+CMD ["npx", "codeceptjs", "run"]
+```
+
+- **Step 2 - Construção da imagem do Docker:** Após salvar o arquivo Dockerfile com as configurações, execute o comando no terminal do VS Code
+```
+docker build -t {nome_imagem_docker} .
+```
+**OBS.:**
+- Para removar/excluir a imagem do Docker, execute o comando abaixo:
+```
+docker rmi {nome_imagem_docker}
+```
+- **Step 3 - Para executar os cenários dos testes através do Docker:** Execute o comando abaixo no terminal do VS Code
+```
+docker run --rm -v "${PWD}/output:/usr/src/app/output" {nome_imagem_docker}
+```

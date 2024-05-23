@@ -196,15 +196,3 @@ docker rmi {nome_imagem_docker}
 ```
 docker run --rm -v "${PWD}/output:/usr/src/app/output" {nome_imagem_docker}
 ```
-
-- **Step 4 - Utilizar a imagem do Docker para executar a Pipeline do Jenkins:** Execute o comando abaixo para configurar o Jenkins
-```
-docker run -p 8080:8080 -p 50000:50000 -v jenkins_data:/var/jenkins_home jenkins/jenkins:lts
-```
-Ao acessar o endereço `http://localhost:8080/`, irá solicitar uma senha, por favor digitar a senha que é apresentada no terminal do VS Code, e em seguida deve prosseguir com a instalação do Jenkins.
-
-- **Step 5 - Recuperar sessão do Jenkins após encerrar:** Após ter configurado o Jenkins no step 4, caso o Jenkins se desconecte, execute o comando abaixo para recuperar o `container_id` e em seguida digite o comando para reinicializar novamente:
-```
-docker ps -a
-docker start {container_id}
-```

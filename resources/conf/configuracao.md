@@ -73,7 +73,7 @@ docker compose down
 docker compose down --volumes --rmi all 
 ```
 
-- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Pipeline: Stage View, HTML Publisher, Blue Ocean'
+- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Docker, Pipeline: Stage View, HTML Publisher, Blue Ocean'
 
 - **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
   - Executar o comando:

@@ -1,11 +1,36 @@
 pipeline {
-    agent {
-        docker {
-            image 'codeceptjs/codeceptjs:sha-0e1b86a'
-        }
+    agent any
     }
     stages {
+        stage('Docker') {
+            steps {
+                sh 'docker start 91faaec65215'
+            }
+        }
+
+        stage('Install dependencies') {
+            agent {
+                docker {
+                    image 'node:22.2-alpine3.20'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    node --version
+                    npm --version
+                    npm install
+                '''
+            }
+        }
+
         stage('Test') {
+            agent {
+                docker {
+                    image 'codeceptjs/codeceptjs:sha-0e1b86a'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'npx codeceptjs run ./tests/e2e/Login_test.js --reporter mochawesome'
             }

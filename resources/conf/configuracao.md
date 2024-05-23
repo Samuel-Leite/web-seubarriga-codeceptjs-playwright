@@ -73,7 +73,7 @@ docker compose down
 docker compose down --volumes --rmi all 
 ```
 
-- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Stage View Pipeline, HTML Publisher'
+- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Stage View Pipeline, HTML Publisher, Blue Ocean'
 
 - **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
   - Executar o comando:
@@ -123,7 +123,7 @@ npm i mochawesome
 - .
   - Executar o comando abaixo no path: Dashboard > Manage Jenkins > section “Tools and actions” > Script Console:
 ```
-System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts;")
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 ```
 - .
   - Acessar a configuração da pipeline no path: Configuração > Pipeline > Pipeline Syntax > selecionar os campos:
@@ -136,3 +136,5 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-sc
 ```
 - .
   - Clique no botão 'Generate Pipeline Script > copia o código informado > cola no Jenkinsfile
+
+- **Step 11 - Configuração da interface Blue Ocean do Jenkins:** Após instalar o plugin do Blue Ocean, irá apresentar o no dashboard o botão 'blue ocean' que irá direcionar para uma nova interface do Dashboard

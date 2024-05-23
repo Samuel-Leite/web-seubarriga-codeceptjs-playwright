@@ -1,11 +1,11 @@
-# Automação E2E com o framework CodeceptJS + Playwright
+# Automação de Testes End-to-End com CodeceptJS + Playwright
 
 
-## 🚀 Introdução:
+## 🚀 INTRODUÇÃO:
 
-Através do framework CodeceptJS + Playwright, o projeto utilizou a plataforma Seu Barriga para realizar automação de testes E2E.
+O projeto de automação de testes end-to-end utilizando os frameworks CodeceptJS + Playwright, visa fornecer uma estrutura robusta para automatizar testes em aplicações web, com foco na eficiência e na integração contínua e entrega contínua (CI/CD) através da Pipeline do Jenkins. Utilizando as tecnologias mais recentes, como Docker e Docker Compose, juntamente com as melhores práticas de desenvolvimento, este projeto oferece uma solução completa para garantir a qualidade do software em cada etapa do ciclo de desenvolvimento. Como base para os testes, utilizamos a plataforma [Seu Barriga](https://seubarriga.wcaquino.me/login) como template, proporcionando um cenário realista para os casos de teste.
 
-## 💻 Tecnologias utilizadas:
+## 💻 TECNOLOGIAS:
 
 - VS Code
 - Node.js
@@ -18,19 +18,23 @@ Através do framework CodeceptJS + Playwright, o projeto utilizou a plataforma S
 - Docker Compose
 - CI/CD
 
-## 🤖 Instalação e configuração:
+## 🤖 CONFIGURAÇÕES:
 
 - Clonar o projeto na máquina local
-- Executar no terminal do projeto automação o comando:
+- Executar no terminal do diretório do projeto o comando:
 
 ```
 'npm install'
 ```
 
-- Informar os dados no arquivo dotEnv com o modelo do dispositivo que será executado e as credenciais do BrowserStack, segue o modelo:
+- Informar os dados necessários no arquivo dotEnv:
 
 ```
+# Navegador a ser utilizado durante os testes
 BROWSER='chromium'
+
+# Ao executar os testes através do Docker preencher 'true', caso contrário, preencher com 'false'
+DOCKER=false
 ```
 - Executar todos os testes:
 
@@ -44,18 +48,57 @@ npm run regression
 npm run tag '@nome_tag'
 ```
 
-Observação: é necessário que esteja configurado o ANDROID_HOME nas variáveis de ambiente da sua máquina.
-
-## 📂 Estrututa do projeto:
+## 📂 ESTRUTURA DO PROJETO:
 
 | Diretório       | Finalidade                                                                             |
 | --------------- | -------------------------------------------------------------------------------------- |
 | ./husky         | Configuração da automação dos commits                                                  |
-| ./helpers       | Configuração com Custom Commands, Hooks e Utils com funções utilizadas na automação    |
-| ./resource/conf |                                                                                        |
-| ./resource/data | Credenciais para logar no aplicativo                                                   |
-| ./tests         | Testes e2e, e pages concernentes aos testes automatizados                              |
+| ./helpers       | Configuração com Custom Commands e Hooks com funções utilizadas na automação           |
+| ./resource/conf | Documentos pertinentes a configurações realizadas durante o projeto                    |
+| ./resource/data | Credenciais para logar na aplicação                                                    |
+| ./tests         | Testes E2E, e pages concernentes aos testes automatizados                              |
 
+
+## DOCKER
+Para executar os testes através do Docker, utilizar os seguintes comandos no terminal do VS Code
+
+- Contruir a imagem do Docker
+
+```
+docker build -t {nome_imagem_docker} .
+```
+
+- Para removar/excluir a imagem do Docker, execute o comando abaixo:
+```
+docker rmi {nome_imagem_docker}
+```
+
+- Para executar os testes, é através do comando no terminal do VS Code
+```
+docker run --rm -v "${PWD}/output:/usr/src/app/output" {nome_imagem_docker}
+```
+
+## TESTES CONTINUOS ATRAVÉS DO DOCKER COMPOSE - JENKINS
+
+### Configuração:
+- Instalar o Docker Compose Desktop,
+- Baixar o arquivo do Docker Compose localizado em `./resources/conf`,
+- Inicializar a imagem do Docker Compose acessando o terminal no diretório do que foi feito download e executando o seguinte comando:
+```
+<!-- Construir a imagem do Docker Compose -->
+docker build -t {nome_docker_compose} .
+
+<!-- Inicializar o Jenkins através do Docker Compose -->
+docker compose up -d
+```
+- Encerrar o Jenkins do Docker Compose, execute o seguinte comando no terminal:
+```
+docker compose down
+```
+
+## CONCLUSÃO:
+
+Ao longo deste projeto, alcançamos diversos objetivos essenciais, desde a construção de testes automatizados até a implementação de uma pipeline de CI/CD eficiente. Utilizando as tecnologias mais recentes e modernas, conseguimos criar uma estrutura sólida e escalável para garantir a qualidade do software.
 
 ## 📷 Evidência dos testes:
 

@@ -52,6 +52,7 @@ Após executar os comandos acima, deve copiar as pastas: .husky, changelog.confi
 ### Instalação do Jenkins através do Docker Compose:
 Para configurar o Docker Compose, é necessários os seguintes passos:
 - **Step 1 - Clonar ou baixar o projeto do repositório:** https://github.com/vdespa/install-jenkins-docker
+  - Consta uma cópia do arquivo no path: `./resources/conf`
 - **Step 2 - Baixar e instalar o Docker Desktop localmente:** https://www.docker.com/products/docker-desktop/
 - **Step 3 - Construir a imagem do Jenkins Docker:** Acesse o terminal no diretório do projeto clonado onde o arquivo `Dockerfile` está localizado. E crie a imagem do Jenkins Docker:
 ```
@@ -121,12 +122,12 @@ exports.config = {
 npm i mochawesome
 ```
 - .
-  - Executar o comando abaixo no path: Dashboard > Manage Jenkins > section “Tools and actions” > Script Console:
+  - Executar o comando abaixo no path: Dashboard > Manage Jenkins > section “Tools and actions” > Script Console para apresentar as informações do HTML Report:
 ```
 System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 ```
 - .
-  - Acessar a configuração da pipeline no path: Configuração > Pipeline > Pipeline Syntax > selecionar os campos:
+  - Para configurar a apresentação do HTML Report, é necessário acessar: Home > Configuração > Pipeline > Pipeline Syntax > preencher os campos:
 
 ```
   **Sample Step:** publishHTML: Publish HTML reports

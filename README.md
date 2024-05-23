@@ -101,10 +101,6 @@ docker compose down
 
 Ao longo deste projeto, alcançamos diversos objetivos essenciais, desde a construção de testes automatizados até a implementação de uma pipeline de CI/CD eficiente. Utilizando as tecnologias mais recentes e modernas, conseguimos criar uma estrutura sólida e escalável para garantir a qualidade do software.
 
-## 📷 Evidência dos testes:
-
-
-
 ## 🔗 Links para Apoio:
 - [Tutorial do CodeceptJs + Playwright](https://codecept.io/playwright/#setup)
 - [Helpers do CodeceptJs + Playwright](https://codecept.io/helpers/Playwright/)

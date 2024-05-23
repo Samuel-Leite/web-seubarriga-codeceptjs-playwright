@@ -4,6 +4,7 @@
 ## 🚀 INTRODUÇÃO:
 
 O projeto de automação de testes end-to-end utilizando os frameworks CodeceptJS + Playwright, visa fornecer uma estrutura robusta para automatizar testes em aplicações web, com foco na eficiência e na integração contínua e entrega contínua (CI/CD) através da Pipeline do Jenkins. Utilizando as tecnologias mais recentes, como Docker e Docker Compose, juntamente com as melhores práticas de desenvolvimento, este projeto oferece uma solução completa para garantir a qualidade do software em cada etapa do ciclo de desenvolvimento. Como base para os testes, utilizamos a plataforma [Seu Barriga](https://seubarriga.wcaquino.me/login) como template, proporcionando um cenário realista para os casos de teste.
+Além disso, como parte do compromisso com a qualidade do código e a consistência no desenvolvimento, implementamos o ESLint e o Prettier, com o objetivo de manter um código limpo, legível e livre de erros, contribuindo para a qualidade geral do projeto.
 
 ## 💻 TECNOLOGIAS:
 

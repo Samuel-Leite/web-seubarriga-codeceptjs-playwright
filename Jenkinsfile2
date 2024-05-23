@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        docker {
+            image 'codeceptjs/codeceptjs:sha-0e1b86a'
+        }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'npx codeceptjs run ./tests/e2e/Login_test.js --reporter mochawesome'
+            }
+        }
+    }
+
+    post {
+        always {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'output', reportFiles: 'mochawesome.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        }
+    }
+}

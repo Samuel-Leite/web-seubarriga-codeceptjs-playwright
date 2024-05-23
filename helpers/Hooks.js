@@ -5,8 +5,8 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
 const Helper = require('@codeceptjs/helper');
-// const fs = require('fs').promises;
-// const path = require('path');
+const fs = require('fs').promises;
+const path = require('path');
 
 class hooks extends Helper {
   async _init() {
@@ -14,12 +14,12 @@ class hooks extends Helper {
     console.log('*************************************');
     console.log('******* Variáveis de Ambiente *******');
     console.log(`BROWSER: ${process.env.BROWSER}`);
-    // try {
-    //   await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
-    //   console.log('DIRETORIO LOCAL: excluído com sucesso!');
-    // } catch (error) {
-    //   console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
-    // }
+    try {
+      await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
+      console.log('DIRETORIO: excluído com sucesso!');
+    } catch (error) {
+      console.error('DIRETORIO: Ocorreu um erro:', error);
+    }
 
     console.log('*************************************');
   }

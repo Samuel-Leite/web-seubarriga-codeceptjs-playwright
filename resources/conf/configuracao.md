@@ -73,7 +73,7 @@ docker compose down
 docker compose down --volumes --rmi all 
 ```
 
-- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Stage View Pipeline, HTML Publisher, Blue Ocean'
+- **Step 8 - Instalar os plugins:** Para executar a Pipeline no Jenkins em um contâiner do Docker, é necessário instalar o plugin 'Docker Pipeline, Pipeline: Stage View, HTML Publisher, Blue Ocean'
 
 - **Step 9 - Instalar JUnit Report:** É necessário instalar o XML Report para realizar a publicação do JUnit Report no Jenkins, seguem as configurações:
   - Executar o comando:
@@ -202,3 +202,9 @@ docker run --rm -v "${PWD}/output:/usr/src/app/output" {nome_imagem_docker}
 docker run -p 8080:8080 -p 50000:50000 -v jenkins_data:/var/jenkins_home jenkins/jenkins:lts
 ```
 Ao acessar o endereço `http://localhost:8080/`, irá solicitar uma senha, por favor digitar a senha que é apresentada no terminal do VS Code, e em seguida deve prosseguir com a instalação do Jenkins.
+
+- **Step 5 - Recuperar sessão do Jenkins após encerrar:** Após ter configurado o Jenkins no step 4, caso o Jenkins se desconecte, execute o comando abaixo para recuperar o `container_id` e em seguida digite o comando para reinicializar novamente:
+```
+docker ps -a
+docker start {container_id}
+```

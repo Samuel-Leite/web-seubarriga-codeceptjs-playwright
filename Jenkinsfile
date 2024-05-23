@@ -5,7 +5,7 @@ pipeline {
         stage('Install dependencies') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'node:22.2-alpine3.20'
                     reuseNode true
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
 
     post {
         always {
-            junit 'output/junit.xml'
+            // junit 'output/junit.xml'
             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'output', reportFiles: 'mochawesome.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }

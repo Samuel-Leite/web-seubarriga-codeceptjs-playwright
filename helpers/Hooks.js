@@ -14,11 +14,20 @@ class hooks extends Helper {
     console.log('*************************************');
     console.log('******* Variáveis de Ambiente *******');
     console.log(`BROWSER: ${process.env.BROWSER}`);
+    // Exclua o diretório output localmente
     try {
       await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
-      console.log('DIRETORIO: excluído com sucesso!');
+      console.log('DIRETORIO LOCAL: excluído com sucesso!');
     } catch (error) {
-      console.error('DIRETORIO: Ocorreu um erro:', error);
+      console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
+    }
+    // Exclua o diretório output dentro do contêiner
+    try {
+      const containerOutputDir = '/usr/src/app/output'; // Diretório output dentro do contêiner
+      await fs.rm(containerOutputDir, { recursive: true });
+      console.log('DIRETORIO CONTAINER: excluído com sucesso!');
+    } catch (error) {
+      console.error('DIRETORIO CONTAINER: Ocorreu um erro:', error);
     }
 
     console.log('*************************************');

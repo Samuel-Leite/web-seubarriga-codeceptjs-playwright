@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Docker') {
             steps {
-                sh 'docker start 91faaec65215'
+                sh 'docker build -t jenkins-docker .'
             }
         }
 

@@ -16,9 +16,9 @@ class hooks extends Helper {
     console.log(`BROWSER: ${process.env.BROWSER}`);
     try {
       await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
-      console.log('DIRETORIO: excluído com sucesso!');
+      console.log('DIRETORIO LOCAL: excluído com sucesso!');
     } catch (error) {
-      console.error('DIRETORIO: Ocorreu um erro:', error);
+      console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
     }
 
     console.log('*************************************');

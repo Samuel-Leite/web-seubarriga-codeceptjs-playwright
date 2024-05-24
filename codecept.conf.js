@@ -9,7 +9,7 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: process.env.BROWSER,
-      url: 'https://seubarriga.wcaquino.me/login',
+      url: '',
       show: true,
     },
     Hooks: {

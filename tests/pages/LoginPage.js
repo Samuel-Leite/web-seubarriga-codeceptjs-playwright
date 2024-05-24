@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
-const { I } = inject();
+const { I, dataHelper } = inject();
 
 class LoginPage {
   constructor() {
@@ -18,7 +18,9 @@ class LoginPage {
   }
 
   visit() {
-    I.amOnPage('/');
+    const url = dataHelper.readUrl(process.env.ENV);
+
+    I.amOnPage(url);
     I.see('Seu Barriga');
   }
 

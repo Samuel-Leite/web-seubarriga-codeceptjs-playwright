@@ -36,6 +36,9 @@ BROWSER='chromium'
 
 # Ao executar os testes através do Docker preencher 'true', caso contrário, preencher com 'false'
 DOCKER=false
+
+# Selecionar o ambiente que vai executar os testes: 'uat' ou 'prod'
+ENV=uat
 ```
 - Executar todos os testes:
 

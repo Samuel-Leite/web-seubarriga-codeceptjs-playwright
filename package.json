@@ -9,7 +9,7 @@
     "commit": "git cz && node .husky/push.js",
     "lint": "eslint . --max-warnings=0",
     "tag": "npx codeceptjs run ./tests/e2e/*_test.js --verbose --grep",
-    "wip": "npx codeceptjs run ./tests/e2e/*_test.js --verbose"
+    "regressao": "npx codeceptjs run ./tests/e2e/*_test.js --verbose"
   },
   "lint-staged": {
     "*": [

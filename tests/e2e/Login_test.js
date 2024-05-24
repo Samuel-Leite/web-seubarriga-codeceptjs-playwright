@@ -1,21 +1,17 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-shadow */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 Feature('Acesso a plataforma Seu Barriga');
 
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-
-// Carrega as credenciais do arquivo YAML
-const credencialPath = path.resolve(__dirname, '../../resources/data/credencial.yml');
-const credencial = yaml.load(fs.readFileSync(credencialPath, 'utf8'));
-
-Scenario('Login com credenciais validas', ({ loginPage }) => {
-  loginPage.doLogin(credencial.valida.email, credencial.valida.senha);
+Scenario('Login com credenciais validas', ({ loginPage, dataHelper }) => {
+  const credencial = dataHelper.readYamlFile('valida');
+  loginPage.doLogin(credencial.email, credencial.senha);
   loginPage.checkLoginStatus('Bem vindo, Seu Madruga!');
 }).tag('wip');
 
-Scenario('Login com credenciais invalidas', ({ loginPage }) => {
-  loginPage.doLogin(credencial.invalida.email, credencial.invalida.senha);
+Scenario('Login com credenciais invalidas', ({ loginPage, dataHelper }) => {
+  const credencial = dataHelper.readYamlFile('invalida');
+  loginPage.doLogin(credencial.email, credencial.senha);
   loginPage.checkLoginStatus('Problemas com o login do usuário');
 });

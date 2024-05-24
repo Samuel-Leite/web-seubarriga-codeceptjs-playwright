@@ -17,6 +17,7 @@ class hooks extends Helper {
     console.log('*************************************');
     console.log('******* Variáveis de Ambiente *******');
     console.log(`BROWSER: ${process.env.BROWSER}`);
+    console.log(`ENV: ${process.env.ENV}`);
     // Verifique se estamos dentro de um contêiner Docker
     const isDocker = process.env.DOCKER === 'true';
 

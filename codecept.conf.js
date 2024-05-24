@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /** @type {CodeceptJS.MainConfig} */
 require('dotenv').config({ path: '.env' });
+const path = require('path');
 
 exports.config = {
   tests: './tests/e2e/Login_test.js',
@@ -8,8 +9,8 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: process.env.BROWSER,
-      url: 'https://seubarriga.wcaquino.me/login',
-      show: false,
+      url: '',
+      show: true,
     },
     Hooks: {
       require: './helpers/Hooks.js',
@@ -18,6 +19,7 @@ exports.config = {
   include: {
     I: './helpers/Commands.js',
     loginPage: './tests/pages/LoginPage.js',
+    dataHelper: path.resolve('./helpers/DataHelper'),
   },
   mocha: {
     reporterOptions: {

@@ -32,7 +32,12 @@ Após executar os comandos acima, deve copiar as pastas: .eslintignore, .eslintr
       "npx lint --fix"
     ]
   },
-```  
+```
+
+- Com o objetivo de garantir consistência no formato de quebra de linha entre diferentes sistemas operacionais, como Windows, Unix e macOS, que usam diferentes convenções para representar quebras de linha nos arquivos de texto, o arquivo fica em um formato mais uniforme, facilitando sua manipulação e processamento em diferentes ambientes e ferramentas através do estilo Unix (LF) que possui Compatibilidade multiplataforma, ferramentas de controle de versão e Padrão da indústria.
+```
+sed -i 's/\r$//' {nome_arquivo}.js
+```
 
 ### Configurações do Husky:
 ```

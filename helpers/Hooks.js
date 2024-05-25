@@ -1,18 +1,19 @@
+/* eslint-disable class-methods-use-this */
 const Helper = require('@codeceptjs/helper')
 const fs = require('fs').promises
 const path = require('path')
 
-class hooks extends Helper {
+class Hooks extends Helper {
   async _init() {
     // before all tests
     console.log('*************************************')
-    console.log('******* Variáveis de Ambiente *******')
+    console.log('** 💻⚙️  Variáveis de Ambiente 💻⚙️  **')
     console.log(`BROWSER: ${process.env.BROWSER}`)
     console.log(`ENV: ${process.env.ENV}`)
-    // Verifique se estamos dentro de um contêiner Docker
+    // Verifica se estamos dentro de um contêiner Docker
     const isDocker = process.env.DOCKER === 'true'
 
-    // Exclua o diretório output localmente, a menos que estejamos dentro de um contêiner Docker
+    // Exclua o diretório output localmente
     if (!isDocker) {
       try {
         await fs.rm(path.resolve(__dirname, '../output'), { recursive: true })
@@ -22,10 +23,10 @@ class hooks extends Helper {
       }
     }
 
-    // Exclua o diretório output dentro do contêiner, se estivermos dentro de um contêiner Docker
+    // Exclua o diretório output dentro do contêiner
     if (isDocker) {
       try {
-        const containerOutputDir = '/usr/src/app/output' // Diretório output dentro do contêiner
+        const containerOutputDir = '/usr/src/app/output'
         const files = await fs.readdir(containerOutputDir)
         files.forEach(async (file) => {
           const filePath = path.join(containerOutputDir, file)
@@ -36,29 +37,42 @@ class hooks extends Helper {
         console.error('DIRETORIO DOCKER: Ocorreu um erro:', error)
       }
     }
-    console.log('*************************************')
   }
 
   _before() {
-    console.log('--------------------------------Start----------------------------------')
+    console.log('🚀--------------- Iniciando a jornada dos testes -----------✈️')
   }
 
   _after() {
-    console.log('--------------------------------End----------------------------------')
-  } // after a test
+    console.log('🎉------------------ Testes concluídos! --------------------🏁')
+  }
 
-  _beforeStep() {} // before each step
+  _beforeStep() {
+    console.log('🚦 Preparando para executar o próximo Step...')
+  }
 
-  _afterStep() {} // after each step
+  _afterStep() {
+    console.log('✅ Step concluído com sucesso!')
+  }
 
-  _beforeSuite() {} // before each suite
+  _beforeSuite() {
+    console.log('📂 Preparando para iniciar uma nova suite de testes...')
+  }
 
-  _afterSuite() {} // after each suite
+  _afterSuite() {
+    console.log('🏁 Suite de testes concluída com sucesso!')
+  }
 
-  _passed() {} // after a test passed
+  _passed() {
+    console.log('✅ Cenário de teste concluído com sucesso!')
+  }
 
-  _failed() {} // after a test failed
+  _failed() {
+    console.log('❌ Teste falhou! Verifique o log para mais detalhes.')
+  }
 
-  _finishTest() {} // after all tests
+  _finishTest() {
+    console.log('🎉 ----------- Todos os testes foram concluídos! -----------🎉')
+  }
 }
-module.exports = hooks
+module.exports = Hooks

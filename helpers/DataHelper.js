@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')

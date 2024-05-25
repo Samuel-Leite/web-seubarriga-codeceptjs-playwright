@@ -22,9 +22,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'linebreak-style': 'off',
+    'linebreak-style': ['error', 'unix'],
     semi: ['error', 'never'],
-    'class-methods-use-this': 'off',
     'no-console': 'off',
     'no-await-in-loop': 'off',
     'no-underscore-dangle': 'off',

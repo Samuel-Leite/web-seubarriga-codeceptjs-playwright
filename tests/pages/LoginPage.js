@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
 const { I, dataHelper } = inject()
 
@@ -39,5 +40,4 @@ class LoginPage {
   }
 }
 
-// For inheritance
 module.exports = new LoginPage()

@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable no-undef */
 // in this file you can append custom step methods to 'I' object
 

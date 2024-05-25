@@ -1,12 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-extraneous-dependencies */
 const Helper = require('@codeceptjs/helper')
 const fs = require('fs').promises
 const path = require('path')
@@ -36,16 +27,15 @@ class hooks extends Helper {
       try {
         const containerOutputDir = '/usr/src/app/output' // Diretório output dentro do contêiner
         const files = await fs.readdir(containerOutputDir)
-        for (const file of files) {
+        files.forEach(async (file) => {
           const filePath = path.join(containerOutputDir, file)
           await fs.rm(filePath, { recursive: true, force: true })
-        }
+        })
         console.log('DIRETORIO DOCKER: limpo com sucesso!')
       } catch (error) {
         console.error('DIRETORIO DOCKER: Ocorreu um erro:', error)
       }
     }
-
     console.log('*************************************')
   }
 

@@ -1,45 +1,43 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
-const { I, dataHelper } = inject();
+const { I, dataHelper } = inject()
 
 class LoginPage {
   constructor() {
-    this.txtEmail = 'email';
-    this.txtPassword = 'senha';
-    this.btnEntrar = 'Entrar';
-    this.alertSuccess = '.alert.alert-success';
-    this.alertError = '.alert.alert-danger';
+    this.txtEmail = 'email'
+    this.txtPassword = 'senha'
+    this.btnEntrar = 'Entrar'
+    this.alertSuccess = '.alert.alert-success'
+    this.alertError = '.alert.alert-danger'
   }
 
   doLogin(email, password) {
-    this.visit();
-    this.fillCredentials(email, password);
+    this.visit()
+    this.fillCredentials(email, password)
   }
 
   visit() {
-    const url = dataHelper.readUrl(process.env.ENV);
+    const url = dataHelper.readUrl(process.env.ENV)
 
-    I.amOnPage(url);
-    I.see('Seu Barriga');
+    I.amOnPage(url)
+    I.see('Seu Barriga')
   }
 
   fillCredentials(email, password) {
-    I.fillField(this.txtEmail, email);
-    I.fillField(this.txtPassword, password);
-    I.click(this.btnEntrar);
+    I.fillField(this.txtEmail, email)
+    I.fillField(this.txtPassword, password)
+    I.click(this.btnEntrar)
   }
 
   checkLoginStatus(expectedStatus) {
     if (expectedStatus === 'Bem vindo, Seu Madruga!') {
-      I.seeElement(this.alertSuccess);
+      I.seeElement(this.alertSuccess)
     } else if (expectedStatus === 'Problemas com o login do usuário') {
-      I.seeElement(this.alertError);
+      I.seeElement(this.alertError)
     } else {
-      throw new Error(`Erro: Status '${expectedStatus}' esperado inválido.`);
+      throw new Error(`Erro: Status '${expectedStatus}' esperado inválido.`)
     }
   }
 }
 
-// For inheritance
-module.exports = new LoginPage();
+module.exports = new LoginPage()

@@ -1,9 +1,8 @@
-/* eslint-disable linebreak-style */
-const { readdirSync } = require('fs');
+const { readdirSync } = require('fs')
 
 const allScopes = readdirSync('./', { withFileTypes: true })
   .filter((dirent) => dirent.isDirectory())
-  .map((dirent) => dirent.name);
+  .map((dirent) => dirent.name)
 
 module.exports = {
   disableEmoji: false,
@@ -49,4 +48,4 @@ module.exports = {
       value: 'merge',
     },
   },
-};
+}

@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 module.exports = {
   env: {
     browser: true,
@@ -23,5 +22,10 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'linebreak-style': ['error', 'unix'],
+    semi: ['error', 'never'],
+    'no-console': 'off',
+    'no-await-in-loop': 'off',
+    'no-underscore-dangle': 'off',
   },
-};
+}

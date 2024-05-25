@@ -7,54 +7,54 @@
 /* eslint-disable no-console */
 /* eslint-disable linebreak-style */
 /* eslint-disable import/no-extraneous-dependencies */
-const Helper = require('@codeceptjs/helper');
-const fs = require('fs').promises;
-const path = require('path');
+const Helper = require('@codeceptjs/helper')
+const fs = require('fs').promises
+const path = require('path')
 
 class hooks extends Helper {
   async _init() {
     // before all tests
-    console.log('*************************************');
-    console.log('******* Variáveis de Ambiente *******');
-    console.log(`BROWSER: ${process.env.BROWSER}`);
-    console.log(`ENV: ${process.env.ENV}`);
+    console.log('*************************************')
+    console.log('******* Variáveis de Ambiente *******')
+    console.log(`BROWSER: ${process.env.BROWSER}`)
+    console.log(`ENV: ${process.env.ENV}`)
     // Verifique se estamos dentro de um contêiner Docker
-    const isDocker = process.env.DOCKER === 'true';
+    const isDocker = process.env.DOCKER === 'true'
 
     // Exclua o diretório output localmente, a menos que estejamos dentro de um contêiner Docker
     if (!isDocker) {
       try {
-        await fs.rm(path.resolve(__dirname, '../output'), { recursive: true });
-        console.log('DIRETORIO LOCAL: excluído com sucesso!');
+        await fs.rm(path.resolve(__dirname, '../output'), { recursive: true })
+        console.log('DIRETORIO LOCAL: excluído com sucesso!')
       } catch (error) {
-        console.error('DIRETORIO LOCAL: Ocorreu um erro:', error);
+        console.error('DIRETORIO LOCAL: Ocorreu um erro:', error)
       }
     }
 
     // Exclua o diretório output dentro do contêiner, se estivermos dentro de um contêiner Docker
     if (isDocker) {
       try {
-        const containerOutputDir = '/usr/src/app/output'; // Diretório output dentro do contêiner
-        const files = await fs.readdir(containerOutputDir);
+        const containerOutputDir = '/usr/src/app/output' // Diretório output dentro do contêiner
+        const files = await fs.readdir(containerOutputDir)
         for (const file of files) {
-          const filePath = path.join(containerOutputDir, file);
-          await fs.rm(filePath, { recursive: true, force: true });
+          const filePath = path.join(containerOutputDir, file)
+          await fs.rm(filePath, { recursive: true, force: true })
         }
-        console.log('DIRETORIO DOCKER: limpo com sucesso!');
+        console.log('DIRETORIO DOCKER: limpo com sucesso!')
       } catch (error) {
-        console.error('DIRETORIO DOCKER: Ocorreu um erro:', error);
+        console.error('DIRETORIO DOCKER: Ocorreu um erro:', error)
       }
     }
 
-    console.log('*************************************');
+    console.log('*************************************')
   }
 
   _before() {
-    console.log('--------------------------------Start----------------------------------');
+    console.log('--------------------------------Start----------------------------------')
   }
 
   _after() {
-    console.log('--------------------------------End----------------------------------');
+    console.log('--------------------------------End----------------------------------')
   } // after a test
 
   _beforeStep() {} // before each step
@@ -71,4 +71,4 @@ class hooks extends Helper {
 
   _finishTest() {} // after all tests
 }
-module.exports = hooks;
+module.exports = hooks

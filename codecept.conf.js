@@ -1,7 +1,6 @@
-/* eslint-disable linebreak-style */
 /** @type {CodeceptJS.MainConfig} */
-require('dotenv').config({ path: '.env' });
-const path = require('path');
+require('dotenv').config({ path: '.env' })
+const path = require('path')
 
 exports.config = {
   tests: './tests/e2e/Login_test.js',
@@ -44,4 +43,4 @@ exports.config = {
     },
   },
   name: 'seu-barriga-codeceptjs-playwright',
-};
+}

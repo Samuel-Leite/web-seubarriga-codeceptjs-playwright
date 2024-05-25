@@ -9,6 +9,7 @@ npm init
 npx playwright install
 npm install --save js-yaml
 npm i dotenv
+npm i -S @codeceptjs/helper
 ```
 
 ### Configurações do Prettier e Eslint:

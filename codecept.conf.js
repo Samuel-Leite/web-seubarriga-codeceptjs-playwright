@@ -9,7 +9,7 @@ exports.config = {
     Playwright: {
       browser: process.env.BROWSER,
       url: '',
-      show: false,
+      show: true,
     },
     Hooks: {
       require: './helpers/Hooks.js',
@@ -21,9 +21,14 @@ exports.config = {
     dataHelper: path.resolve('./helpers/DataHelper'),
   },
   mocha: {
+    reporter: 'mochawesome', // Especifica o Mochawesome como o repórter
     reporterOptions: {
-      mochaFile: 'output/junit.xml',
-      reportDir: 'output',
+      reportDir: 'output', // Diretório onde o relatório será salvo
+      reportFilename: 'report', // Nome do arquivo de relatório
+      quiet: true,
+      json: false,
+      html: true,
+      overwrite: true,
     },
   },
   plugins: {

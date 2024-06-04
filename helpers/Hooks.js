@@ -2,6 +2,7 @@
 const Helper = require('@codeceptjs/helper')
 const fs = require('fs').promises
 const path = require('path')
+const { exec } = require('child_process')
 
 class Hooks extends Helper {
   async _init() {
@@ -73,6 +74,22 @@ class Hooks extends Helper {
 
   _finishTest() {
     console.log('🎉 ----------- Todos os testes foram concluídos! -----------🎉')
+
+    // Caminho para o arquivo de relatório HTML do Mochawesome
+    const reportPath = path.join(__dirname, '../output/report.html')
+
+    // Determinar o comando apropriado para abrir o relatório no Windows
+    const openCommand = process.platform === 'win32' ? `start "" "${reportPath}"` : `open "${reportPath}"`
+
+    // Executar o comando para abrir o relatório
+    exec(openCommand, (err) => {
+      if (err) {
+        console.error('Erro ao abrir o relatório:', err)
+      } else {
+        console.log('Relatório aberto com sucesso.')
+      }
+    })
   }
 }
+
 module.exports = Hooks

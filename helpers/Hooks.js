@@ -73,8 +73,6 @@ class Hooks extends Helper {
   }
 
   _finishTest() {
-    console.log('🎉 ----------- Todos os testes foram concluídos! -----------🎉')
-
     // Caminho para o arquivo de relatório HTML do Mochawesome
     const reportPath = path.join(__dirname, '../output/report.html')
 
@@ -86,7 +84,7 @@ class Hooks extends Helper {
       if (err) {
         console.error('Erro ao abrir o relatório:', err)
       } else {
-        console.log('Relatório aberto com sucesso.')
+        console.log('Relatório de teste gerado e aberto com sucesso!')
       }
     })
   }

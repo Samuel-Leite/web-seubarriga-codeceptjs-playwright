@@ -25,10 +25,14 @@ exports.config = {
     reporterOptions: {
       reportDir: 'output', // Diretório onde o relatório será salvo
       reportFilename: 'report', // Nome do arquivo de relatório
+      reportTitle: 'My Project Report',
+      inlineAssets: true,
       quiet: true,
       json: false,
       html: true,
       overwrite: true,
+      charts: true,
+      code: true,
     },
   },
   plugins: {
